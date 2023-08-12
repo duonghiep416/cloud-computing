@@ -1,12 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap");
+
 /* Reset some default styles */
-body, h1, h2, h3, h4, h5, h6, p, ul, li {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Sora", sans-serif;
     line-height: 1.6;
 }
 
@@ -17,7 +28,7 @@ body {
 }
 
 .header {
-    background-color: #f7f7f7;
+    background-color: #333;
     padding: 10px 0;
 }
 
@@ -41,7 +52,7 @@ body {
 }
 
 .main-nav a {
-    color: #333;
+    color: #fff;
     text-decoration: none;
     padding: 10px 15px;
     border: 1px solid transparent;
@@ -50,6 +61,7 @@ body {
 .main-nav a:hover {
     background-color: #f0f0f0;
     border-color: #ddd;
+    color: #333;
 }
 
 .hero {
@@ -72,14 +84,27 @@ body {
 .btn {
     display: inline-block;
     padding: 12px 20px;
-    background-color: #ff6600;
-    color: #fff;
+    color: #fff !important;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 8px;
+    background-color: #4158d0;
+    background-image: linear-gradient(
+        43deg,
+        #4158d0 0%,
+        #c850c0 46%,
+        #ffcc70 100%
+    );
+    transition: 0.3s linear;
+}
+
+.background-home {
+    width: 100%;
+    height: 500px;
+    background-image: url(bgc-home.jpg);
 }
 
 .btn:hover {
-    background-color: #e65c00;
+    background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
 }
 
 .featured-products {

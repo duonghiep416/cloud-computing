@@ -1,13 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&display=swap");
 /* Reset some default styles */
-body, h1, h2, h3, h4, h5, h6, p, ul, li {
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Sora", sans-serif;
     line-height: 1.6;
+    background-color: #333;
+    color: #fff;
+}
+
+button,
+input,
+select,
+textarea {
+    font-family: "Sora", sans-serif;
 }
 
 .container {
@@ -17,7 +36,6 @@ body {
 }
 
 .header {
-    background-color: #f7f7f7;
     padding: 10px 0;
 }
 
@@ -40,7 +58,7 @@ body {
 }
 
 .main-nav a {
-    color: #333;
+    color: #fff;
     text-decoration: none;
     padding: 10px 15px;
     border: 1px solid transparent;
@@ -86,14 +104,24 @@ body {
 .btn {
     display: inline-block;
     padding: 12px 20px;
-    background-color: #007bff;
+    background-color: #4158d0;
+    background-image: linear-gradient(
+        43deg,
+        #4158d0 0%,
+        #c850c0 46%,
+        #ffcc70 100%
+    );
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s linear;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+    background-image: linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%);
 }
 
 .signup p {

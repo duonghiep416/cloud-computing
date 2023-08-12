@@ -1,106 +1,104 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ToyLand - Cửa hàng đồ chơi trực tuyến</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ToyLand - Cửa hàng đồ chơi trực tuyến</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
 
-<body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            
-            <nav class="main-nav">
-                <ul>
-                   <img style="height: 64px; width: 100px; "  src="logo3.jpg" alt="ToyLand Logo" class="logo">
-                    <li><a href="/homepage">Trang chủ</a></li>
-                    <li><a href="/toy-manager">Cửa hàng</a></li>
-                    <li><a href="#categories">Danh mục</a></li>
-                    <li><a href="#about">Giới thiệu</a></li>
-                    <li><a href="#contact">Liên hệ</a></li>
-                    <li><a href="#cart">Giỏ hàng</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <section class="user-actions">
-        <div class="container">
-            <div class="user-buttons">
-                <!-- Sử dụng handlebars để hiển thị email nếu đã đăng nhập -->
-                {{#if user}}
-                <span class="user-name">Xin chào, {{user.name}}</span>
-                <a href="/logout" class="btn btn-secondary">Đăng xuất</a>
-                {{else}}
-                <!-- Nếu chưa đăng nhập, hiển thị nút Đăng ký và Đăng nhập -->
-                <a href="/register" class="btn btn-secondary">Đăng ký</a>
-                <a href="/login" class="btn btn-primary" >Đăng nhập</a>
-                {{/if}}
+    <body>
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+
+                <nav class="main-nav">
+                    <ul>
+                        <img
+                            style="height: 64px; width: 100px; "
+                            src="logo3.png"
+                            alt="ToyLand Logo"
+                            class="logo"
+                        />
+                        <li><a href="/homepage">Trang chủ</a></li>
+                        <li><a href="/toy-manager">Cửa hàng</a></li>
+                        <li><a href="#categories">Danh mục</a></li>
+                        <li><a href="#about">Giới thiệu</a></li>
+                        <li><a href="#contact">Liên hệ</a></li>
+                        <li><a href="#cart">Giỏ hàng</a></li>
+                        <div class="user-buttons">
+                            <!-- Sử dụng handlebars để hiển thị email nếu đã đăng nhập -->
+                            {{#if user}}
+                                <span class="user-name">Xin chào,
+                                    {{user.name}}</span>
+                                <a href="/logout" class="btn btn-secondary">Đăng
+                                    xuất</a>
+                            {{else}}
+                                <!-- Nếu chưa đăng nhập, hiển thị nút Đăng ký và Đăng nhập -->
+                                <a
+                                    href="/register"
+                                    class="btn btn-secondary"
+                                >Đăng ký</a>
+                                <a href="/login" class="btn btn-primary">Đăng
+                                    nhập</a>
+                            {{/if}}
+                        </div>
+                    </ul>
+                </nav>
             </div>
+        </header>
+        <div class="background-home">
         </div>
-    </section>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>Chào mừng bạn đến với ToyLand!</h1>
-            <p>Khám phá thế giới đồ chơi đa dạng và phong phú dành cho các bé yêu</p>
-            <a href="/toy-manager" class="btn btn-primary">Xem ngay</a>
-        </div>
-    </section>
-    <!-- Featured Products Section -->
-    <section class="featured-products">
-        <div class="container">
-            <h2>Sản phẩm nổi bật</h2>
-            <div class="product-grid">
-                {{#each featuredProducts}}
-                <!-- Hiển thị các sản phẩm nổi bật với hình ảnh, tên và giá cả -->
-                <div class="product-item">
-                    <a href="/product/{{_id}}"> <!-- Thêm liên kết đến trang view sản phẩm với id của sản phẩm -->
-                        <img src="{{image}}" alt="{{name}}">
-                    </a>
-                    <h3>{{name}}</h3>
-                    <p>Giá: {{price}}</p>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <h1>Chào mừng bạn đến với thế giới đồ chơi dành cho trẻ em
+                    ToyStore</h1>
+                <p>Explore the diverse world of toys for babies</p>
+                <a href="/toy-manager" class="btn btn-primary">Xem ngay</a>
+            </div>
+        </section>
+        <!-- Featured Products Section -->
+        <section class="featured-products">
+            <div class="container">
+                <h2>Sản phẩm nổi bật</h2>
+                <div class="product-grid">
+                    {{#each featuredProducts}}
+                        <!-- Hiển thị các sản phẩm nổi bật với hình ảnh, tên và giá cả -->
+                        <div class="product-item">
+                            <a href="/product/{{_id}}">
+                                <!-- Thêm liên kết đến trang view sản phẩm với id của sản phẩm -->
+                                <img src="{{image}}" alt="{{name}}" />
+                            </a>
+                            <h3>{{name}}</h3>
+                            <p>Giá: {{price}}</p>
+                        </div>
+                    {{/each}}
                 </div>
-                {{/each}}
             </div>
-        </div>
-    </section>
-    <!-- About Us Section -->
-    <section class="about-us" id="about">
-        <div class="container">
-            <h2>Về chúng tôi</h2>
-            <p>ToyLand là một cửa hàng đồ chơi trực tuyến chuyên cung cấp các loại đồ chơi phù hợp cho trẻ em từ 1 đến
-                10 tuổi. Chúng tôi cam kết mang đến những sản phẩm chất lượng và an toàn nhất cho sự phát triển của các
-                bé yêu. Với đội ngũ nhân viên nhiệt tình và giàu kinh nghiệm, chúng tôi luôn sẵn sàng hỗ trợ bạn tìm
-                kiếm những món quà thú vị cho con trẻ.</p>
-        </div>
-    </section>
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2>Liên hệ chúng tôi</h2>
-            <p>Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ, vui lòng liên hệ với chúng tôi qua thông tin bên dưới:</p>
-            <div class="contact-info">
-                <p><strong>Địa chỉ:</strong> Số 123, Đường ABC, Thành phố XYZ</p>
-                <p><strong>Số điện thoại:</strong> (012) 345-6789</p>
-                <p><strong>Email:</strong> info@toyland.com</p>
+        </section>
+        <!-- About Us Section -->
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2023 ToyStore. All rights reserved.</p>
+                <div class="social-links">
+                    <!-- Các biểu tượng mạng xã hội -->
+                    <a href="#" class="social-icon"><img
+                            src="facebook.png"
+                            alt="Facebook"
+                        /></a>
+                    <a href="#" class="social-icon"><img
+                            src="instagram.png"
+                            alt="Instagram"
+                        /></a>
+                    <a href="#" class="social-icon"><img
+                            src="twitter.png"
+                            alt="Twitter"
+                        /></a>
+                </div>
             </div>
-        </div>
-    </section>
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2023 ToyLand. All rights reserved.</p>
-            <div class="social-links">
-                <!-- Các biểu tượng mạng xã hội -->
-                <a href="#" class="social-icon"><img src="facebook.png" alt="Facebook"></a>
-                <a href="#" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
-                <a href="#" class="social-icon"><img src="twitter.png" alt="Twitter"></a>
-            </div>
-        </div>
-    </footer>
-</body>
+        </footer>
+    </body>
 
 </html>
