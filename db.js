@@ -1,8 +1,9 @@
 const { MongoClient, ObjectId } = require("mongodb");
-
+// Replace with MongoDB connection URL
 const mongoURI =
-    "mongodb+srv://haianhngu:haianhngu@cluster0.1oekati.mongodb.net/"; // Replace with your MongoDB connection URL
-const dbName = "products"; // Replace with your database name
+    "mongodb+srv://haianhngu:haianhngu@cluster0.1oekati.mongodb.net/";
+// Replace with database name
+const dbName = "products";
 
 let db;
 

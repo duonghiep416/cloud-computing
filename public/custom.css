@@ -81,13 +81,14 @@
 
 .product-render img {
     max-width: 100%;
-    height: 140px;
+    height: 200px;
     object-fit: cover;
     border-radius: 5px 5px 0 0;
 }
 
 .product-render .container {
-    padding: 10px;
+    padding: 0 20px;
+    margin: 0;
 }
 
 .product-render h4 {

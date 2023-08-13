@@ -1,152 +1,125 @@
-<!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ToyLand - Cửa hàng đồ chơi trực tuyến</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Add the following link tags in the head section of your HTML -->
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/custom.css">
-  <style>
-    table {
-      border-collapse: collapse;
-      width: 80%;
-    }
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ToyLand - Cửa hàng đồ chơi trực tuyến</title>
+        <link rel="stylesheet" href="style.css" />
+        <!-- Add the following link tags in the head section of your HTML -->
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/custom.css" />
+        <style>
 
-    th,
-    td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      text-align: left;
-    }
+            table { border-collapse: collapse; width: 80%; } th, td { border:
+            1px solid #ccc; padding: 8px; text-align: left; } th {
+            background-color: #f2f2f2; } tr:nth-child(even) { background-color:
+            #f2f2f2; } tr:hover { background-color: #ddd; } .card { display:
+            flex; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); transition: 0.3s;
+            border-radius: 5px; flex-wrap: wrap; max-width: 1300px; margin: 0
+            auto;} .card:hover { box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2); }
+            img { border-radius: 5px 5px 5px 5px; } .container { padding: 2px
+            16px; } .search-input { height: 50px; width: 200px; border: none;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; font-family:
+            system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+            Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+            sans-serif; border-radius: 10px; box-sizing: border-box;
+            padding-left: 10px; outline: none;} .submit { height: 50px; border:
+            none; border-radius: 7px; color: #fff; padding: 0 10px; font-size:
+            20px; background-color: #FA8BFF; background-image:
+            linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+            cursor: pointer; transition: .3s linear;} .submit:hover { transform:
+            scale(0.95); } .form-search { margin-top: 30px; float: right; }
+            .product-render { flex-basis: calc(100% / 4); }
 
-    th {
-      background-color: #f2f2f2;
-    }
+        </style>
 
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
+    </head>
 
-    tr:hover {
-      background-color: #ddd;
-    }
+    <body>
 
-    .card {
-      display: flex;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-      transition: 0.3s;
-      width: 100%;
-      border-radius: 5px;
+        <!-- Header -->
+        <header class="header">
+            <div class="container">
+                <nav class="main-nav">
+                    <ul>
+                        <img
+                            style="height: 64px; width: 100px; "
+                            src="logo3.jpg"
+                            alt="ToyLand Logo"
+                            class="logo"
+                        />
+                        <li><a href="/homepage">Trang chủ</a></li>
+                        <li><a href="/toy-manager">Cửa hàng</a></li>
+                        <li><a href="#categories">Danh mục</a></li>
+                        <li><a href="/about">Giới thiệu</a></li>
+                        <li><a href="#contact">Liên hệ</a></li>
+                        <li><a href="#cart">Giỏ hàng</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <form action="/search" method="get" class="form-search">
+            <input
+                type="text"
+                name="q"
+                placeholder="Tìm kiếm theo tên sản phẩm..."
+                class="search-input"
+            />
+            <button type="submit" class="submit">Tìm kiếm</button>
+            <a
+                href="/new"
+                class="btn btn-primary btn-lg active"
+                role="button"
+                aria-pressed="true"
+            >Add New Toy</a>
+        </form>
 
+        <br />
+        <div class="card">
+            {{#each products}}
+                <div class="product-render">
+                    <img src="{{image}}" alt="{{name}}" style="width:100%" />
+                    <div class="container">
+                        <h4><b>{{name}}</b></h4>
+                        <p>Price: {{price}}</p>
+                        <p>Description: {{description}}</p>
+                        <div class="action">
 
-    }
-
-    .card:hover {
-      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-    }
-
-    img {
-      border-radius: 5px 5px 5px 5px;
-    }
-
-    .container {
-
-      padding: 2px 16px;
-    }
-  </style>
-
-</head>
-
-<body>
-
-
-  <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <nav class="main-nav">
-        <ul>
-          <img style="height: 64px; width: 100px; " src="logo3.jpg" alt="ToyLand Logo" class="logo">
-          <li><a href="/homepage">Trang chủ</a></li>
-          <li><a href="/toy-manager">Cửa hàng</a></li>
-          <li><a href="#categories">Danh mục</a></li>
-          <li><a href="/about">Giới thiệu</a></li>
-          <li><a href="#contact">Liên hệ</a></li>
-          <li><a href="#cart">Giỏ hàng</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-  <form action="/search" method="get">
-  <input type="text" name="q" placeholder="Tìm kiếm theo tên sản phẩm...">
-  <button type="submit">Tìm kiếm</button>
-</form>
-
-
-  <br>
-  <div class="card">
-    {{#each products}}
-    <div class="product-render">
-        <img src="{{image}}" alt="{{name}}" style="width:100%">
-        <div class="container">
-          <h4><b>{{name}}</b></h4>
-          <p>Price: {{price}}</p>
-          <p>Description: {{description}}</p>
-          <div class="action">
-          
-          <form action="/delete/{{_id}}" method="post" onsubmit="return confirmDelete('{{name}}')">
-          <a href="/edit/{{_id}}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit</a>
-            <button type="submit" class="btn btn-danger">Delete</button>
-          </form>
+                            <form
+                                action="/delete/{{_id}}"
+                                method="post"
+                                onsubmit="return confirmDelete('{{name}}')"
+                            >
+                                <a
+                                    href="/edit/{{_id}}"
+                                    class="btn btn-primary btn-lg active"
+                                    role="button"
+                                    aria-pressed="true"
+                                >Edit</a>
+                                <button
+                                    type="submit"
+                                    class="btn btn-danger"
+                                >Delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
         </div>
-        </div>
-      </div>
-      {{/each}}
-  </div>
 
-  <br>
-  <a href="/new" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Add New Toy</a>
+        <br />
 
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <h2>Liên hệ chúng tôi</h2>
-      <p>Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ, vui lòng liên hệ với chúng tôi qua thông tin bên dưới:</p>
-      <div class="contact-info">
-        <p><strong>Địa chỉ:</strong> Số 123, Đường ABC, Thành phố XYZ</p>
-        <p><strong>Số điện thoại:</strong> (012) 345-6789</p>
-        <p><strong>Email:</strong> info@toyland.com</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <p>&copy; 2023 ToyLand. All rights reserved.</p>
-      <div class="social-links">
-        <!-- Các biểu tượng mạng xã hội -->
-        <a href="#" class="social-icon"><img src="facebook.png" alt="Facebook"></a>
-        <a href="#" class="social-icon"><img src="Instagram.png" alt="Instagram"></a>
-        <a href="#" class="social-icon"><img src="Twitter.png" alt="Twitter"></a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Toy Manager Section -->
-  <section class="toy-manager">
-    <div class="container">
-      <!-- Add the content from toy-manager.hbs here -->
-    </div>
-  </section>
-  <script>
-    function confirmDelete(productName) {
-      // Show a confirmation dialog before submitting the delete form
-      return confirm(`Are you sure you want to delete ${productName}?`);
-    }
-  </script>
-</body>
+        <!-- Toy Manager Section -->
+        <section class="toy-manager">
+            <div class="container">
+                <!-- Add the content from toy-manager.hbs here -->
+            </div>
+        </section>
+        <script>
+            function confirmDelete(productName) { // Show a confirmation dialog
+            before submitting the delete form return confirm(`Are you sure you
+            want to delete ${productName}?`); }
+        </script>
+    </body>
 
 </html>
